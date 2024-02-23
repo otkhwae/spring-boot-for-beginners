@@ -1,8 +1,8 @@
 name: build test & deploy springboot 
 
 on:
-    #push:
-      #branches: 
+    push:
+      branches: 
         - main
     pull_request:
       branches: 
@@ -54,4 +54,8 @@ jobs:
                 dockerfile: Dockerfile
                 push: true
                 tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-git-actions:today
-        
+
+
+
+
+            
