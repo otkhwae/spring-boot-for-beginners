@@ -24,7 +24,19 @@ jobs:
                 java-version: 17
                 distribution: 'temurin'
                 cache: maven
+            - name: Unit Tests
+              run: mvn -B test --file pom.xml
+        
+            - name: Build the application
+              run: |
+                mvn clean
+                mvn -B package --file pom.xml
             
-            - name: Build & test the app with maven
-              run: mvn --batch-mode package
+            - name: Build Docker Image
+              uses: docker/build-push-action@v2
+              with:
+                context: .
+                dockerfile: Dockerfile
+                push: false
+                tags: ${{ secrets.DOCKER_HUB_USERNAME }}
 
