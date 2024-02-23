@@ -39,6 +39,11 @@ jobs:
                 dockerfile: Dockerfile
                 push: false
                 tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-git-actions:today
-              
+            
+            - name: Login to Docker Hub
+              uses: docker/login-action@v1
+              with:
+                username: ${{ secrets.DOCKER_HUB_USERNAME }}
+                password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
 
