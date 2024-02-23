@@ -3,7 +3,7 @@ name: build test & deploy springboot
 on:
     push:
       branches: 
-       # - main
+        - main
     pull_request:
       branches: 
         - main
@@ -31,12 +31,5 @@ jobs:
               run: |
                 mvn clean
                 mvn -B package --file pom.xml
-            
-            - name: Build Docker Image
-              uses: docker/build-push-action@v2
-              with:
-                context: .
-                dockerfile: Dockerfile
-                push: false
-                tags: ${{ secrets.DOCKER_HUB_USERNAME }}
+
 
