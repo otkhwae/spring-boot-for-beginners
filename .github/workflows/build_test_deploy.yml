@@ -38,7 +38,7 @@ jobs:
                 context: .
                 dockerfile: Dockerfile
                 push: false
-                tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-git-actions:today
+                tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-git-actions:1.0.0
             
             - name: Docker Hub Login
               uses: docker/login-action@v1
@@ -53,7 +53,7 @@ jobs:
                 context: .
                 dockerfile: Dockerfile
                 push: true
-                tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-git-actions:today
+                tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-git-actions:1.0.0
 
 
 
