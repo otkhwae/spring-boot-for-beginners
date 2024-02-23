@@ -12,7 +12,7 @@ on:
 
 jobs:
     build:
-        name: build springboot
+        name: build and test springboot
         runs-on: ubuntu-latest
         steps:
             - name: checkout - clone repo into runner
@@ -24,6 +24,18 @@ jobs:
                 java-version: 17
                 distribution: 'corretto'
                 cache: maven
+            
+            - name: Build the application
+              run: |
+                mvn clean
+                mvn -B package --file pom.xml
+    
+    test:
+        name: test springboot
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout - clone repo into runner
+              uses: actions/checkout@v3
             
             - name: Unit Test
               run: mvn -B test --file pom.xml
